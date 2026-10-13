@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>サイトマップ | さくらレディース＆マタニティクリニック 採用サイト</title>
+  <meta name="description" content="さくらレディース＆マタニティクリニック看護師採用特設サイトの全ページ・コンテンツ一覧です。仕事内容、先輩の声、研修制度、募集要項、見学会情報などを網羅しています。">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&family=Shippori+Mincho:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sakura: {
+              50: '#FFF5F7',
+              100: '#FFF0F3',
+              200: '#FDE2E8',
+              300: '#FBBAC9',
+              400: '#F489A1',
+              500: '#E87A90',
+              600: '#D15B74',
+              700: '#B5435B',
+            },
+            warm: {
+              50: '#FAF8F5',
+              100: '#F5F0E9',
+              200: '#EDE4D8',
+              300: '#DFD1BD',
+              800: '#3D3835',
+              900: '#2A2624',
+            },
+            mint: {
+              50: '#F0F7F5',
+              500: '#5A8D80',
+              600: '#477469',
+            }
+          },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            serif: ['"Shippori Mincho"', 'serif'],
+            en: ['"Outfit"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-warm-50 text-warm-900 selection:bg-sakura-200 selection:text-sakura-700">
+
+  <!-- =======================================================================
+       ヘッダー / ナビゲーション
+       ======================================================================= -->
+  <header id="mainHeader" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300">
+    <!-- ポートフォリオ実績用 架空サイト固定告知バー -->
+    <div id="portfolioNotice" class="bg-stone-900 text-stone-200 py-1.5 px-3 sm:px-4 text-[11px] sm:text-xs font-medium border-b border-stone-800 shadow-md">
+      <div class="max-w-7xl mx-auto flex items-center justify-center gap-2 text-center flex-wrap">
+        <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-amber-400 text-stone-950 tracking-wider shrink-0">PORTFOLIO DEMO</span>
+        <span class="text-stone-200 font-sans tracking-tight">
+          【ポートフォリオ実績用】本サイトはWeb制作実績用の架空クリニック採用LPです。実在の医療機関・人物・求人とは一切関係ありません。
+        </span>
+      </div>
+    </div>
+
+    <!-- ナビゲーションバー本体 -->
+    <div id="navContainer" class="bg-white/95 backdrop-blur-md border-b border-sakura-100 transition-all duration-300">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          <!-- ロゴエリア -->
+          <a href="index.html" class="flex items-center gap-3 group">
+            <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-sakura-500 to-sakura-300 flex items-center justify-center text-white shadow-md shadow-sakura-200/50 group-hover:scale-105 transition-transform">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C12 2 10.5 6 8.5 7.5C6.5 9 2 9.5 2 12C2 14.5 6.5 15 8.5 16.5C10.5 18 12 22 12 22C12 22 13.5 18 15.5 16.5C17.5 15 22 14.5 22 12C22 9.5 17.5 9 15.5 7.5C13.5 6 12 2 12 2Z" opacity="0.9"/>
+                <circle cx="12" cy="12" r="3" fill="#ffffff"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs font-semibold tracking-wider text-sakura-600 font-sans">医療法人社団 桜愛会</div>
+              <div class="text-lg sm:text-xl font-bold font-serif text-warm-900 tracking-tight flex items-center gap-1.5">
+                さくらレディース＆マタニティクリニック
+                <span class="text-xs font-normal text-sakura-600 bg-sakura-50 px-2 py-0.5 rounded-full border border-sakura-200 hidden md:inline-block">採用特設サイト</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- デスクトップナビゲーション -->
+          <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-warm-800">
+            <a href="index.html#message" class="hover:text-sakura-600 transition-colors">当院の想い</a>
+            <a href="index.html#numbers" class="hover:text-sakura-600 transition-colors">数字で知る</a>
+            <a href="index.html#features" class="hover:text-sakura-600 transition-colors">4つの魅力</a>
+            <a href="index.html#work" class="hover:text-sakura-600 transition-colors">仕事内容</a>
+            <a href="index.html#schedule" class="hover:text-sakura-600 transition-colors">1日の流れ</a>
+            <a href="index.html#interview" class="hover:text-sakura-600 transition-colors">スタッフの声</a>
+            <a href="index.html#requirements" class="hover:text-sakura-600 transition-colors">募集要項</a>
+            <a href="index.html#faq" class="hover:text-sakura-600 transition-colors">よくある質問</a>
+          </nav>
+
+          <!-- ヘッダー右側CTA -->
+          <div class="hidden sm:flex items-center gap-3">
+            <a href="index.html#contactForm" class="btn-primary inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs md:text-sm font-bold text-white shadow-md">
+              <span>採用トップへ戻る</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- モバイル用ハンバーガーボタン -->
+          <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-xl text-warm-800 hover:bg-sakura-50 focus:outline-none" aria-label="メニューを開く">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- モバイル開閉メニュー -->
+        <div id="mobileNav" class="lg:hidden overflow-hidden transition-all duration-300 max-h-0 bg-white border-t border-sakura-100">
+          <div class="px-3 pt-3 pb-6 space-y-1 text-sm font-medium">
+            <a href="index.html" class="block px-3 py-2.5 rounded-lg text-sakura-600 font-bold hover:bg-sakura-50">🏠 採用トップページへ</a>
+            <a href="index.html#message" class="block px-3 py-2.5 rounded-lg text-warm-800 hover:bg-sakura-50">当院の想い・メッセージ</a>
+            <a href="index.html#features" class="block px-3 py-2.5 rounded-lg text-warm-800 hover:bg-sakura-50">産婦人科で働く4つの魅力</a>
+            <a href="index.html#work" class="block px-3 py-2.5 rounded-lg text-warm-800 hover:bg-sakura-50">看護師の仕事内容</a>
+            <a href="index.html#interview" class="block px-3 py-2.5 rounded-lg text-warm-800 hover:bg-sakura-50">先輩スタッフインタビュー</a>
+            <a href="index.html#requirements" class="block px-3 py-2.5 rounded-lg text-warm-800 hover:bg-sakura-50">募集要項</a>
+            <a href="privacy.html" class="block px-3 py-2.5 rounded-lg text-warm-800 hover:bg-sakura-50">プライバシーポリシー</a>
+            <div class="pt-4">
+              <a href="index.html#contactForm" class="w-full py-3 rounded-full text-center text-sm font-bold btn-primary text-white block">
+                職場見学・応募フォームへ
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =======================================================================
+       メインコンテンツ（サイトマップ）
+       ======================================================================= -->
+  <main class="pt-36 sm:pt-40 pb-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- パンくずリスト -->
+      <nav class="flex items-center gap-2 text-xs text-warm-800 mb-8 font-medium">
+        <a href="index.html" class="hover:text-sakura-600 transition-colors flex items-center gap-1">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+          </svg>
+          ホーム
+        </a>
+        <span>/</span>
+        <span class="text-sakura-600 font-semibold">サイトマップ</span>
+      </nav>
+
+      <!-- ページヘッダー -->
+      <div class="text-center mb-12 sm:mb-16">
+        <span class="section-badge mb-3">SITE MAP</span>
+        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold font-serif text-warm-900 tracking-tight">
+          サイトマップ
+        </h1>
+        <p class="mt-4 text-warm-800 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
+          さくらレディース＆マタニティクリニック 看護師採用特設サイトの全コンテンツ一覧です。<br class="hidden sm:inline">
+          各リンクをクリックすると、該当セクションまたはページへ直接移動します。
+        </p>
+      </div>
+
+      <!-- サイトマップグリッド -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- カテゴリ1: クリニックについて・想い -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-sakura-100 shadow-card">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-sakura-100">
+            <div class="w-10 h-10 rounded-2xl bg-sakura-100 text-sakura-600 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+              </svg>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-sakura-600 uppercase tracking-wider block font-en">ABOUT CLINIC</span>
+              <h2 class="text-lg font-bold font-serif text-warm-900">クリニックについて・想い</h2>
+            </div>
+          </div>
+
+          <ul class="space-y-3.5 text-sm text-warm-800">
+            <li>
+              <a href="index.html#hero" class="group flex items-start gap-2 hover:text-sakura-600 transition-colors">
+                <span class="text-sakura-400 group-hover:translate-x-1 transition-transform">▶</span>
+                <div>
+                  <span class="font-bold block">採用トップ / メインビジュアル</span>
+                  <span class="text-xs text-warm-500">キャッチコピー・募集トピックス・特徴ダイジェスト</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="index.html#message" class="group flex items-start gap-2 hover:text-sakura-600 transition-colors">
+                <span class="text-sakura-400 group-hover:translate-x-1 transition-transform">▶</span>
+                <div>
+                  <span class="font-bold block">院長・看護部長からのメッセージ</span>
+                  <span class="text-xs text-warm-500">当院が大切にしている理念・求職者への想い</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="index.html#numbers" class="group flex items-start gap-2 hover:text-sakura-600 transition-colors">
+                <span class="text-sakura-400 group-hover:translate-x-1 transition-transform">▶</span>
+                <div>
+                  <span class="font-bold block">数字で知るさくらレディースクリニック</span>
+                  <span class="text-xs text-warm-500">残業4.2h・有休消化96%・復帰率100%など</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="index.html#features" class="group flex items-start gap-2 hover:text-sakura-600 transition-colors">
+                <span class="text-sakura-400 group-hover:translate-x-1 transition-transform">▶</span>
+                <div>
+                  <span class="font-bold block">産婦人科で働く4つの魅力</span>
+                  <span class="text-xs text-warm-500">命の誕生・寄り添う看護・私生活との両立・サポート体制</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="index.html#facility" class="group flex items-start gap-2 hover:text-sakura-600 transition-colors">
+                <span class="text-sakura-400 group-hover:translate-x-1 transition-transform">▶</span>
+                <div>
+                  <span class="font-bold block">院内ツアー・設備環境ギャラリー</span>
+                  <span class="text-xs text-warm-500">待合ラウンジ・全室個室病室・スタッフルーム写真</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- カテゴリ2: 仕事内容・スタッフ紹介 -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-sakura-100 shadow-card">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-sakura-100">
+            <div class="w-10 h-10 rounded-2xl bg-sakura-100 text-sakura-600 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+              </svg>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-sakura-600 uppercase tracking-wider block font-en">WORK & TEAM</span>
+              <h2 class="text-lg font-bold font-serif text-warm-900">仕事内容・働く環境</h2>
+            </div>
+          </div>
+
+          <ul class="space-y-3.5 text-sm text-warm-800">
+            <li>
+              <a href="index.html#work" class="group flex items-start gap-2 hover:text-sakura-600 transition-colors">
+                <span class="text-sakura-400 group-hover:translate-x-1 transition-transform">▶</span>
+                <div>
+                  <span class="font-bold block">看護師・助産師の仕事内容</span>
+                  <span class="text-xs text-warm-500">外来看護・病棟新生児ケア・手術サポート・マタニティクラス</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="index.html#schedule" class="group flex items-start gap-2 hover:text-sakura-600 transition-colors">
+                <span class="text-sakura-400 group-hover:translate-x-1 transition-transform">▶</span>
+                <div>
+                  <span class="font-bold block">1日の仕事の流れ（スケジュール）</span>
+                  <span class="text-xs text-warm-500">日勤（8:30〜17:30）および夜勤（16:30〜翌9:00）タイムライン</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="index.html#interview" class="group flex items-start gap-2 hover:text-sakura-600 transition-colors">
+                <span class="text-sakura-400 group-hover:translate-x-1 transition-transform">▶</span>
+                <div>
+                  <span class="font-bold block">先輩スタッフのリアルな声</span>
+                  <span class="text-xs text-warm-500">総合病院からの転職者・未経験入職者・助産師チーフの体験談</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="index.html#training" class="group flex items-start gap-2 hover:text-sakura-600 transition-colors">
+                <span class="text-sakura-400 group-hover:translate-x-1 transition-transform">▶</span>
+                <div>
+                  <span class="font-bold block">研修・教育体制</span>
+                  <span class="text-xs text-warm-500">入職後3ステップ（見守り〜独り立ち〜専門性向上）・プリセプター制度</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="index.html#benefits" class="group flex items-start gap-2 hover:text-sakura-600 transition-colors">
+                <span class="text-sakura-400 group-hover:translate-x-1 transition-transform">▶</span>
+                <div>
+                  <span class="font-bold block">福利厚生・働く環境</span>
+                  <span class="text-xs text-warm-500">賞与年2回・年間休日124日・託児手当・資格取得支援など</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- カテゴリ3: 募集要項・選考 -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-sakura-100 shadow-card">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-sakura-100">
+            <div class="w-10 h-10 rounded-2xl bg-sakura-100 text-sakura-600 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-sakura-600 uppercase tracking-wider block font-en">RECRUITMENT</span>
+              <h2 class="text-lg font-bold font-serif text-warm-900">募集要項・選考案内</h2>
+            </div>
+          </div>
+
+          <ul class="space-y-3.5 text-sm text-warm-800">
+            <li>
+              <a href="index.html#requirements" class="group flex items-start gap-2 hover:text-sakura-600 transition-colors">
+                <span class="text-sakura-400 group-hover:translate-x-1 transition-transform">▶</span>
+                <div>
+                  <span class="font-bold block">募集要項</span>
+                  <span class="text-xs text-warm-500">正看護師・助産師・准看護師 / 常勤・日勤専従・パートの給与・勤務条件</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="index.html#flow" class="group flex items-start gap-2 hover:text-sakura-600 transition-colors">
+                <span class="text-sakura-400 group-hover:translate-x-1 transition-transform">▶</span>
+                <div>
+                  <span class="font-bold block">選考プロセス</span>
+                  <span class="text-xs text-warm-500">エントリー 〜 職場見学 〜 面接1回 〜 内定までの流れ</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="index.html#faq" class="group flex items-start gap-2 hover:text-sakura-600 transition-colors">
+                <span class="text-sakura-400 group-hover:translate-x-1 transition-transform">▶</span>
+                <div>
+                  <span class="font-bold block">よくある質問（FAQ）</span>
+                  <span class="text-xs text-warm-500">未経験やブランク、夜勤回数、見学会の服装などQ&A</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="index.html#access" class="group flex items-start gap-2 hover:text-sakura-600 transition-colors">
+                <span class="text-sakura-400 group-hover:translate-x-1 transition-transform">▶</span>
+                <div>
+                  <span class="font-bold block">クリニック概要 & アクセス</span>
+                  <span class="text-xs text-warm-500">所在地・診療科・最寄り駅からのアクセス情報</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- カテゴリ4: 応募窓口・関連ページ -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-sakura-100 shadow-card">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-sakura-100">
+            <div class="w-10 h-10 rounded-2xl bg-sakura-100 text-sakura-600 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-sakura-600 uppercase tracking-wider block font-en">ENTRY & PAGES</span>
+              <h2 class="text-lg font-bold font-serif text-warm-900">応募・エントリー & 関連ページ</h2>
+            </div>
+          </div>
+
+          <ul class="space-y-3.5 text-sm text-warm-800">
+            <li>
+              <a href="index.html#contactForm" class="group flex items-start gap-2 hover:text-sakura-600 transition-colors">
+                <span class="text-sakura-400 group-hover:translate-x-1 transition-transform">▶</span>
+                <div>
+                  <span class="font-bold block text-sakura-600">WEB応募・見学エントリーフォーム</span>
+                  <span class="text-xs text-warm-500">24時間受付（職場見学・本選考応募・相談）</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="privacy.html" class="group flex items-start gap-2 hover:text-sakura-600 transition-colors">
+                <span class="text-sakura-400 group-hover:translate-x-1 transition-transform">▶</span>
+                <div>
+                  <span class="font-bold block">プライバシーポリシー（個人情報保護方針）</span>
+                  <span class="text-xs text-warm-500">採用活動における個人情報の適正管理・利用目的</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <span class="flex items-start gap-2 text-warm-400">
+                <span>▶</span>
+                <div>
+                  <span class="font-bold block text-warm-900">サイトマップ（本ページ）</span>
+                  <span class="text-xs text-warm-500">採用サイトの全体構造とページ一覧</span>
+                </div>
+              </span>
+            </li>
+          </ul>
+
+          <!-- クイックアクションバナー -->
+          <div class="mt-6 p-4 rounded-2xl bg-sakura-50/70 border border-sakura-200">
+            <span class="text-xs font-bold text-sakura-600 block mb-1">まずは雰囲気を見に来ませんか？</span>
+            <p class="text-[11px] text-warm-800 leading-relaxed mb-3">
+              履歴書不要・私服OKで参加できる30分の職場見学会を随時開催中です。
+            </p>
+            <a href="index.html#contactForm" class="btn-primary w-full py-2.5 rounded-full text-center text-xs font-bold text-white block shadow-sm">
+              職場見学会に申し込む
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 戻るボタン -->
+      <div class="mt-12 text-center">
+        <a href="index.html" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-bold bg-white text-sakura-600 border border-sakura-300 hover:bg-sakura-50 transition-all shadow-sm">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+          </svg>
+          採用トップページへ戻る
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- =======================================================================
+       フッター
+       ======================================================================= -->
+  <footer class="bg-warm-900 text-warm-300 pt-16 pb-12 border-t border-warm-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-warm-800">
+        
+        <div class="md:col-span-5">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-9 h-9 rounded-xl bg-sakura-500 flex items-center justify-center text-white">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C12 2 10.5 6 8.5 7.5C6.5 9 2 9.5 2 12C2 14.5 6.5 15 8.5 16.5C10.5 18 12 22 12 22C12 22 13.5 18 15.5 16.5C17.5 15 22 14.5 22 12C22 9.5 17.5 9 15.5 7.5C13.5 6 12 2 12 2Z" opacity="0.9"/>
+                <circle cx="12" cy="12" r="3" fill="#ffffff"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-[11px] text-sakura-400 font-sans">医療法人社団 桜愛会</div>
+              <div class="text-base font-bold font-serif text-white">さくらレディース＆マタニティクリニック</div>
+            </div>
+          </div>
+          <p class="text-xs text-warm-400 leading-relaxed max-w-sm">
+            女性の一生に寄り添い、安心とあたたかな温もりに満ちたお産と医療を提供します。
+          </p>
+        </div>
+
+        <div class="md:col-span-7 flex flex-wrap gap-x-8 gap-y-3 text-xs sm:text-sm text-warm-300">
+          <a href="index.html#message" class="hover:text-sakura-400 transition-colors">当院の想い</a>
+          <a href="index.html#numbers" class="hover:text-sakura-400 transition-colors">数字で見る特徴</a>
+          <a href="index.html#features" class="hover:text-sakura-400 transition-colors">産婦人科の魅力</a>
+          <a href="index.html#work" class="hover:text-sakura-400 transition-colors">仕事内容</a>
+          <a href="index.html#schedule" class="hover:text-sakura-400 transition-colors">1日の流れ</a>
+          <a href="index.html#interview" class="hover:text-sakura-400 transition-colors">先輩インタビュー</a>
+          <a href="index.html#requirements" class="hover:text-sakura-400 transition-colors">募集要項</a>
+          <a href="index.html#faq" class="hover:text-sakura-400 transition-colors">よくある質問</a>
+          <a href="index.html#contactForm" class="hover:text-sakura-400 transition-colors">見学・応募フォーム</a>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-warm-400">
+        <div>© 2026 Sakura Ladies & Maternity Clinic. All Rights Reserved.（※本サイトはWeb制作ポートフォリオ用サンプルサイトです）</div>
+        <div class="flex items-center gap-4">
+          <a href="privacy.html" class="hover:underline">プライバシーポリシー</a>
+          <a href="sitemap.html" class="text-sakura-400 underline font-semibold">サイトマップ</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // モバイルメニュー開閉スクリプト
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    if (mobileMenuBtn && mobileNav) {
+      mobileMenuBtn.addEventListener('click', () => {
+        if (mobileNav.style.maxHeight && mobileNav.style.maxHeight !== '0px') {
+          mobileNav.style.maxHeight = '0px';
+        } else {
+          mobileNav.style.maxHeight = mobileNav.scrollHeight + 'px';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
