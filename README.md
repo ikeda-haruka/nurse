@@ -81,7 +81,28 @@ C:\gitHub\nurse\
 cd C:\gitHub\nurse
 npm start
 ```
-ブラウザで [http://localhost:3000](http://localhost:3000) にアクセスしてください。
+---
+
+## 🌐 GitHub Pages 公開手順
+
+### 公開後のURL
+👉 **https://ikeda-haruka.github.io/nurse/**
+
+### 初回公開の手順
+1. **GitHubでリポジトリを作成**  
+   ブラウザで [https://github.com/new](https://github.com/new) にアクセスし、以下を設定して作成します：
+   - Repository name: **`nurse`**
+   - **Public**（公開）を選択
+   - ※「Add a README file」等のチェックは外した空の状態で「Create repository」をクリック
+2. **コードをプッシュ**  
+   ターミナルまたはPowerShellで以下を実行します：
+   ```bash
+   cd C:\gitHub\nurse
+   git push -u origin main
+   ```
+3. **GitHub Pagesを有効化**  
+   作成したリポジトリの **Settings** > **Pages** に移動し、**Build and deployment** の **Source** を **GitHub Actions** に設定します。（自動作成されたワークフロー `.github/workflows/deploy.yml` により数分で自動公開されます）
+   *(※「Deploy from a branch」で Branch: `main` / `/(root)` を選んでも同様に公開可能です)*
 
 ---
 
@@ -90,3 +111,4 @@ npm start
 - **クリニック名の変更**: `index.html` 内のテキスト（`さくらレディース＆マタニティクリニック`）を置換するだけで変更可能です。
 - **配色の調整**: `assets/css/style.css` の `:root` 内のカラー変数（`--color-primary`, `--color-accent-mint` など）または `index.html` の `tailwind.config` で調整できます。
 - **写真の差し替え**: 実際の院内写真やスタッフ写真を `assets/images/` に配置し、`index.html` 内の `img src` を差し替えることで、実在するクリニックの写真に簡単に切り替えられます。
+
