@@ -1,0 +1,25 @@
+name: デザイン・UI/UX改善 (Design Improvement)
+description: モバイル表示の調整や配色、文言の改善をリクエストします
+title: "[デザイン改善] "
+labels: ["design", "ui/ux"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        デザイン・レイアウト・タイポグラフィ等の改善要望はこちらからお願いします。
+  - type: textarea
+    id: current-behavior
+    attributes:
+      label: 現在の状態・課題
+      description: どのような表示崩れや改善点があるか記載してください。
+      placeholder: "例: スマートフォンでボタンの余白が狭い"
+    validations:
+      required: true
+  - type: textarea
+    id: proposed-improvement
+    attributes:
+      label: 改善案・理想の表示
+      description: どのように改善したいか記載してください。
+      placeholder: "例: ボタンのパディングを広げてタップしやすくする"
+    validations:
+      required: true

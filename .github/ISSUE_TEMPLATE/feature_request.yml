@@ -1,0 +1,25 @@
+name: 機能要望・セクション追加 (Feature Request)
+description: 新しいセクションや機能の追加・改善をリクエストします
+title: "[機能要望] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        産婦人科クリニック看護師採用LPに対する機能追加や改善のご提案ありがとうございます。
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: 要望の内容
+      description: どのような機能やセクションを追加したいか詳しく教えてください。
+      placeholder: "例: 院内見学ツアーの紹介動画セクションを追加したい"
+    validations:
+      required: true
+  - type: textarea
+    id: purpose
+    attributes:
+      label: 目的・期待する効果
+      description: この変更によって得られる採用効果や求職者へのメリットを記載してください。
+      placeholder: "例: クリニックの雰囲気がよりリアルに伝わり、見学応募率が高まる"
+    validations:
+      required: false

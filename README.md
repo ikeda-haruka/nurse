@@ -112,3 +112,23 @@ npm start
 - **配色の調整**: `assets/css/style.css` の `:root` 内のカラー変数（`--color-primary`, `--color-accent-mint` など）または `index.html` の `tailwind.config` で調整できます。
 - **写真の差し替え**: 実際の院内写真やスタッフ写真を `assets/images/` に配置し、`index.html` 内の `img src` を差し替えることで、実在するクリニックの写真に簡単に切り替えられます。
 
+---
+
+## 📋 GitHub Issues による進捗同期と変更履歴管理
+
+本プロジェクトの開発タスクおよび変更履歴は、GitHub Issues と常に同期管理されています。
+
+- **マスター進捗トラッカー**: [Issue #6 - プロジェクト進捗・変更履歴トラッカー](https://github.com/ikeda-haruka/nurse/issues/6)
+- **過去の対応履歴**:
+  - [#1 [初期構築] 産婦人科クリニック看護師採用LPの全体設計・UIデザイン・実装](https://github.com/ikeda-haruka/nurse/issues/1) (Closed)
+  - [#2 [ビジュアル] 日本人女性看護師・医療スタッフの写真素材生成とコンテンツ文言の完全整合](https://github.com/ikeda-haruka/nurse/issues/2) (Closed)
+  - [#3 [インフラ] GitHub PagesによるWeb公開と自動デプロイパイプライン構築](https://github.com/ikeda-haruka/nurse/issues/3) (Closed)
+  - [#4 [要件対応] ポートフォリオ実績用デモサイト告知バーの最上部固定表示](https://github.com/ikeda-haruka/nurse/issues/4) (Closed)
+  - [#5 [UI/UX改善] スマートフォン・タブレット表示における3カラムカードの1カラム最適化](https://github.com/ikeda-haruka/nurse/issues/5) (Closed)
+
+### 🔄 自動同期ワークフロー（GitHub Actions）
+`.github/workflows/sync-issues.yml` により、`main` ブランチへコミットがプッシュされるたびに以下の処理が自動実行されます：
+1. **コミット自動追記**: プッシュされたコミット情報（ハッシュ・メッセージ・URL）がマスターIssue [#6](https://github.com/ikeda-haruka/nurse/issues/6) の「コミット変更履歴（Changelog）」に自動追記されます。
+2. **Issue自動コメント**: コミットメッセージに関連するIssue番号（例: `#5`）が含まれている場合、該当Issueへ反映通知コメントが自動投稿されます。
+
+
