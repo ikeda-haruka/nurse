@@ -62,16 +62,16 @@ function initMobileMenu() {
    2. ヘッダースクロール効果
    ========================================================================== */
 function initHeaderScroll() {
-  const header = document.getElementById('mainHeader');
-  if (!header) return;
+  const navContainer = document.getElementById('navContainer');
+  if (!navContainer) return;
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      header.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-sm');
-      header.classList.remove('bg-white/80');
+    if (window.scrollY > 30) {
+      navContainer.classList.add('bg-white/95', 'shadow-sm');
+      navContainer.classList.remove('bg-white/85');
     } else {
-      header.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-sm');
-      header.classList.add('bg-white/80');
+      navContainer.classList.remove('bg-white/95', 'shadow-sm');
+      navContainer.classList.add('bg-white/85');
     }
   });
 }
