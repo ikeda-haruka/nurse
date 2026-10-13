@@ -1,0 +1,13 @@
+{
+  "name": "maternity-nurse-recruiting-lp",
+  "version": "1.0.0",
+  "description": "産婦人科クリニック 看護師採用ランディングページ",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["landing-page", "nurse-recruitment", "maternity-clinic", "lp"],
+  "author": "Antigravity",
+  "license": "MIT"
+}

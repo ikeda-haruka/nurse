@@ -1,0 +1,338 @@
+/* ==========================================================================
+   産婦人科クリニック 看護師採用LP - スタイルシート
+   さくらレディース＆マタニティクリニック
+   ========================================================================== */
+
+:root {
+  --color-primary: #E87A90;
+  --color-primary-dark: #CD5C75;
+  --color-primary-light: #FFF0F3;
+  --color-primary-soft: #FDE8EC;
+  
+  --color-accent-mint: #5A8D80;
+  --color-accent-mint-light: #EBF3F1;
+  --color-accent-gold: #C89B53;
+  
+  --color-bg-base: #FCFAF8;
+  --color-bg-card: #FFFFFF;
+  --color-bg-warm: #F7F3EE;
+  
+  --color-text-main: #3C3836;
+  --color-text-sub: #6E6864;
+  --color-text-light: #9B948E;
+  
+  --color-border: #EFE7DE;
+  
+  --font-sans: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-serif: 'Shippori Mincho', "Yu Mincho", YuMincho, "Hiragino Mincho ProN", serif;
+  --font-en: 'Outfit', sans-serif;
+}
+
+/* リセット＆基本スタイル */
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  color: var(--color-text-main);
+  background-color: var(--color-bg-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+  line-height: 1.75;
+}
+
+/* フォントクラス */
+.font-serif-custom {
+  font-family: var(--font-serif);
+}
+
+.font-en-custom {
+  font-family: var(--font-en);
+}
+
+/* 柔らかいグラデーション背景 */
+.bg-warm-gradient {
+  background: linear-gradient(135deg, #FFF6F7 0%, #FAF6F0 50%, #F5F1E9 100%);
+}
+
+.bg-cherry-gradient {
+  background: linear-gradient(135deg, #FFF0F3 0%, #FDE2E8 100%);
+}
+
+.bg-hero-texture {
+  background-color: #FAF6F0;
+  background-image: radial-gradient(rgba(232, 122, 144, 0.08) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+/* 柔らかなシャドウ */
+.shadow-soft {
+  box-shadow: 0 10px 30px -5px rgba(216, 175, 175, 0.15), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+}
+
+.shadow-card {
+  box-shadow: 0 8px 24px rgba(220, 190, 190, 0.12);
+}
+
+.shadow-card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.shadow-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(216, 160, 175, 0.22);
+}
+
+/* ボタン装飾 */
+.btn-primary {
+  background: linear-gradient(135deg, #EB8096 0%, #D8637B 100%);
+  color: #ffffff;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(216, 99, 123, 0.35);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #F08E9E 0%, #DE6E86 100%);
+  box-shadow: 0 6px 20px rgba(216, 99, 123, 0.45);
+  transform: translateY(-2px);
+}
+
+.btn-line {
+  background-color: #06C755;
+  color: #ffffff;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(6, 199, 85, 0.3);
+}
+
+.btn-line:hover {
+  background-color: #05B34C;
+  box-shadow: 0 6px 18px rgba(6, 199, 85, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-outline-warm {
+  border: 1.5px solid var(--color-primary);
+  color: var(--color-primary-dark);
+  background-color: #ffffff;
+  transition: all 0.25s ease;
+}
+
+.btn-outline-warm:hover {
+  background-color: var(--color-primary-light);
+  transform: translateY(-2px);
+}
+
+/* 見出しバッジ・装飾 */
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 1.1rem;
+  border-radius: 9999px;
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(232, 122, 144, 0.25);
+}
+
+.section-title {
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, #E87A90, #F7BAC7);
+  border-radius: 2px;
+}
+
+/* オーガニックシェイプ装飾（水玉ブロブ） */
+.blob-shape-1 {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+.blob-shape-2 {
+  border-radius: 40% 60% 70% 30% / 40% 70% 30% 60%;
+}
+
+/* タイムライン装飾 */
+.timeline-item {
+  position: relative;
+  padding-left: 2.25rem;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 0.6rem;
+  top: 1.75rem;
+  bottom: -0.75rem;
+  width: 2px;
+  background-color: #F1D4DC;
+}
+
+.timeline-item:last-child::before {
+  display: none;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 0;
+  top: 0.25rem;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  border: 3px solid #FFF0F3;
+}
+
+/* タブの切り替えアニメーション */
+.tab-content {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tab-content.active {
+  display: block;
+  opacity: 1;
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* アコーディオン */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0, 1, 0, 1), opacity 0.3s ease;
+  opacity: 0;
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 1000px;
+  transition: max-height 0.4s cubic-bezier(1, 0, 1, 0), opacity 0.4s ease;
+  opacity: 1;
+}
+
+.accordion-item.active .accordion-icon {
+  transform: rotate(180deg);
+}
+
+/* スクロールアニメーション（Reveal） */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* フローティングCTAバー（モバイル＆デスクトップ共通） */
+.floating-bottom-cta {
+  transform: translateY(120%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
+.floating-bottom-cta.is-visible {
+  transform: translateY(0);
+}
+
+/* モーダルポップアップ */
+.modal-backdrop {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  transform: scale(0.95) translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-backdrop.is-open .modal-content {
+  transform: scale(1) translateY(0);
+}
+
+/* チェックマークリスト */
+.check-list-item {
+  position: relative;
+  padding-left: 1.75rem;
+}
+
+.check-list-item::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+/* 吹き出し装飾 */
+.speech-bubble {
+  position: relative;
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 28px;
+  border-width: 10px 10px 0;
+  border-style: solid;
+  border-color: #ffffff transparent;
+  display: block;
+  width: 0;
+}
+
+/* レスポンシブフォント調整 */
+@media (max-width: 640px) {
+  .section-title {
+    font-size: 1.65rem;
+    line-height: 1.35;
+  }
+}
+
+/* フローティングアニメーション */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+

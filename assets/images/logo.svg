@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="sakuraGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBBAC9" />
+      <stop offset="50%" stop-color="#E87A90" />
+      <stop offset="100%" stop-color="#D15B74" />
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#D15B74" flood-opacity="0.25" />
+    </filter>
+  </defs>
+  <!-- 背景円 -->
+  <circle cx="60" cy="60" r="54" fill="#FFF0F3" stroke="#FDE2E8" stroke-width="2" />
+  
+  <!-- 桜の花びら -->
+  <g transform="translate(60, 60)" filter="url(#softShadow)">
+    <!-- 5枚の花びら -->
+    <path d="M 0,0 C -12,-20 -20,-45 0,-50 C 20,-45 12,-20 0,0 Z" fill="url(#sakuraGrad)" />
+    <path d="M 0,0 C -12,-20 -20,-45 0,-50 C 20,-45 12,-20 0,0 Z" fill="url(#sakuraGrad)" transform="rotate(72)" />
+    <path d="M 0,0 C -12,-20 -20,-45 0,-50 C 20,-45 12,-20 0,0 Z" fill="url(#sakuraGrad)" transform="rotate(144)" />
+    <path d="M 0,0 C -12,-20 -20,-45 0,-50 C 20,-45 12,-20 0,0 Z" fill="url(#sakuraGrad)" transform="rotate(216)" />
+    <path d="M 0,0 C -12,-20 -20,-45 0,-50 C 20,-45 12,-20 0,0 Z" fill="url(#sakuraGrad)" transform="rotate(288)" />
+    
+    <!-- 中央の花芯・ハート -->
+    <circle cx="0" cy="0" r="14" fill="#FFFFFF" />
+    <path d="M 0,4 C -4,-1 -8,-4 -8,-8 C -8,-11 -5,-13 -2,-13 C 0,-13 0,-10 0,-10 C 0,-10 0,-13 2,-13 C 5,-13 8,-11 8,-8 C 8,-4 4,-1 0,4 Z" fill="#E87A90" transform="translate(0, 1)" />
+  </g>
+</svg>
