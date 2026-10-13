@@ -361,4 +361,82 @@ body {
   }
 }
 
+/* ==========================================================================
+   見学予約カレンダー スタイル (Reservation Calendar)
+   ========================================================================== */
+.calendar-cell {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.625rem;
+  transition: all 0.2s ease;
+  user-select: none;
+  padding: 0.2rem;
+}
+
+.calendar-cell.has-slot {
+  cursor: pointer;
+  background-color: #ffffff;
+  border: 1px solid rgba(232, 122, 144, 0.25);
+}
+
+.calendar-cell.has-slot:hover {
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.calendar-cell.is-selected {
+  background-color: var(--color-primary) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 10px rgba(232, 122, 144, 0.4);
+  border-color: var(--color-primary) !important;
+  transform: scale(1.05);
+  font-weight: bold;
+}
+
+.calendar-cell.is-selected .calendar-slot-badge {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  color: #ffffff !important;
+}
+
+.calendar-cell.is-disabled {
+  color: #a8a29e;
+  background-color: transparent;
+  cursor: default;
+}
+
+.calendar-slot-badge {
+  font-size: 0.625rem;
+  line-height: 1;
+  font-weight: 700;
+  margin-top: 0.15rem;
+  padding: 0.1rem 0.3rem;
+  border-radius: 9999px;
+}
+
+.slot-open {
+  color: #059669;
+  background-color: #ecfdf5;
+}
+
+.slot-few {
+  color: #d97706;
+  background-color: #fffbeb;
+}
+
+.slot-none {
+  color: #a8a29e;
+}
+
+.time-slot-btn.is-selected {
+  background-color: var(--color-primary) !important;
+  color: #ffffff !important;
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 2px 6px rgba(232, 122, 144, 0.35);
+  font-weight: bold;
+}
+
 

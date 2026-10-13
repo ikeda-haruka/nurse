@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTabs();
   initAccordion();
   initModals();
+  initReservationCalendar();
   initFormHandling();
 });
 
@@ -260,12 +261,19 @@ function initFormHandling() {
   if (quickForm) {
     quickForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      const selectedDateVal = document.getElementById('selectedDateTimeInput')?.value || '';
+      if (!selectedDateVal) {
+        showSuccessToast('⚠️ カレンダーからご希望の見学日時を選択してください。');
+        return;
+      }
+
       const modal = document.getElementById('quickTourModal');
       if (modal) {
         modal.classList.remove('is-open');
         document.body.style.overflow = '';
       }
-      showSuccessToast('見学のお申し込みを受け付けました！\n担当者より24時間以内にご連絡いたします。');
+
+      showSuccessToast(`🎉 見学会のご予約を承りました！\n予約日時：${selectedDateVal}\n担当者より24時間以内に確認のご連絡をいたします。`);
       quickForm.reset();
     });
   }
@@ -324,4 +332,185 @@ function showSuccessToast(message) {
     toast.style.transform = 'translate(-50%, 10px)';
     setTimeout(() => toast.remove(), 300);
   }, 4000);
+}
+
+/* ==========================================================================
+   9. 見学予約カレンダー制御 (Tour Reservation Calendar)
+   ========================================================================== */
+function initReservationCalendar() {
+  const datesGrid = document.getElementById('calendarDatesGrid');
+  const monthLabel = document.getElementById('calendarCurrentMonthLabel');
+  const prevBtn = document.getElementById('calendarPrevMonth');
+  const nextBtn = document.getElementById('calendarNextMonth');
+  const timeSlotContainer = document.getElementById('timeSlotContainer');
+  const selectedDateLabel = document.getElementById('selectedDateLabel');
+  const selectedDateTimeText = document.getElementById('selectedDateTimeText');
+  const selectedDateTimeInput = document.getElementById('selectedDateTimeInput');
+  const submitBtn = document.getElementById('quickTourSubmitBtn');
+  const timeSlotBtns = document.querySelectorAll('.time-slot-btn');
+
+  if (!datesGrid || !monthLabel) return;
+
+  const dayNames = ['日', '月', '火', '水', '木', '金', '土'];
+
+  // 基準年月: 2026年10月（0-indexed: 9）
+  let currentYear = 2026;
+  let currentMonth = 9; // 10月
+  const minMonth = 9;   // 10月
+  const maxMonth = 10;  // 11月
+
+  // 初期選択日: 2026年10月15日(木) 14:00〜14:30
+  let selectedYear = 2026;
+  let selectedMonth = 9;
+  let selectedDate = 15;
+  let selectedDayName = '木';
+  let selectedTime = '14:00〜14:30';
+
+  // 空き状況ステータス判定（リアルな産婦人科クリニックの見学枠設定）
+  function getSlotStatus(year, month, date, dayOfWeek) {
+    // 過去日（2026年10月13日以前）
+    if (year === 2026 && month === 9 && date < 13) {
+      return { status: 'none', label: '-' };
+    }
+    // 日曜日は休診
+    if (dayOfWeek === 0) {
+      return { status: 'none', label: '休' };
+    }
+    // 祝日（11/3文化の日、11/23勤労感謝の日）
+    if (month === 10 && (date === 3 || date === 23)) {
+      return { status: 'none', label: '休' };
+    }
+    // 土曜日は午前・昼枠のみ（○または△）
+    if (dayOfWeek === 6) {
+      return (date % 2 === 0) ? { status: 'few', label: '△' } : { status: 'open', label: '○' };
+    }
+    // 平日：基本は○（空きあり）、一部人気日程は△（残りわずか）
+    if (date % 4 === 0) {
+      return { status: 'few', label: '△' };
+    }
+    return { status: 'open', label: '○' };
+  }
+
+  function updateDisplay() {
+    if (selectedDate) {
+      const monthDisplay = selectedMonth + 1;
+      const fullString = `${monthDisplay}月${selectedDate}日(${selectedDayName}) ${selectedTime}`;
+      if (selectedDateLabel) selectedDateLabel.textContent = `${monthDisplay}月${selectedDate}日(${selectedDayName})`;
+      if (selectedDateTimeText) selectedDateTimeText.textContent = fullString;
+      if (selectedDateTimeInput) selectedDateTimeInput.value = `${selectedYear}年${fullString}`;
+      if (submitBtn) {
+        submitBtn.innerHTML = `
+          <span>この日程（${monthDisplay}月${selectedDate}日 ${selectedTime}）で予約する</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        `;
+      }
+      if (timeSlotContainer) timeSlotContainer.classList.remove('hidden');
+    }
+
+    // 時間帯ボタンのアクティブ状態
+    timeSlotBtns.forEach(btn => {
+      if (btn.getAttribute('data-time') === selectedTime) {
+        btn.classList.add('is-selected');
+      } else {
+        btn.classList.remove('is-selected');
+      }
+    });
+  }
+
+  function renderCalendar() {
+    datesGrid.innerHTML = '';
+    const displayMonthNum = currentMonth + 1;
+    monthLabel.textContent = `${currentYear}年 ${displayMonthNum}月`;
+
+    // 前月・次月ボタン制御
+    if (prevBtn) prevBtn.disabled = (currentMonth <= minMonth);
+    if (nextBtn) nextBtn.disabled = (currentMonth >= maxMonth);
+
+    // その月の初日の曜日と日数
+    const firstDayIndex = new Date(currentYear, currentMonth, 1).getDay();
+    const totalDays = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+    // 先頭の空セル
+    for (let i = 0; i < firstDayIndex; i++) {
+      const blank = document.createElement('div');
+      blank.className = 'calendar-cell is-disabled';
+      datesGrid.appendChild(blank);
+    }
+
+    // 各日のセル
+    for (let d = 1; d <= totalDays; d++) {
+      const dayOfWeek = (firstDayIndex + d - 1) % 7;
+      const dayName = dayNames[dayOfWeek];
+      const slot = getSlotStatus(currentYear, currentMonth, d, dayOfWeek);
+
+      const cell = document.createElement('div');
+      cell.className = 'calendar-cell';
+
+      const isSelectable = (slot.status === 'open' || slot.status === 'few');
+      const isCurrentSelected = (selectedYear === currentYear && selectedMonth === currentMonth && selectedDate === d);
+
+      if (isSelectable) {
+        cell.classList.add('has-slot');
+        if (isCurrentSelected) {
+          cell.classList.add('is-selected');
+        }
+      } else {
+        cell.classList.add('is-disabled');
+      }
+
+      // 曜日別カラー
+      let dateColorClass = 'text-warm-900';
+      if (dayOfWeek === 0) dateColorClass = 'text-rose-500 font-bold';
+      else if (dayOfWeek === 6) dateColorClass = 'text-sky-600 font-bold';
+
+      cell.innerHTML = `
+        <span class="text-xs font-semibold ${dateColorClass}">${d}</span>
+        <span class="calendar-slot-badge ${slot.status === 'open' ? 'slot-open' : slot.status === 'few' ? 'slot-few' : 'slot-none'}">${slot.label}</span>
+      `;
+
+      if (isSelectable) {
+        cell.addEventListener('click', () => {
+          selectedYear = currentYear;
+          selectedMonth = currentMonth;
+          selectedDate = d;
+          selectedDayName = dayName;
+          updateDisplay();
+          renderCalendar();
+        });
+      }
+
+      datesGrid.appendChild(cell);
+    }
+  }
+
+  // 時間帯ボタンクリックイベント
+  timeSlotBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      selectedTime = btn.getAttribute('data-time') || '14:00〜14:30';
+      updateDisplay();
+    });
+  });
+
+  // 前月 / 次月切り替え
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (currentMonth > minMonth) {
+        currentMonth--;
+        renderCalendar();
+      }
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      if (currentMonth < maxMonth) {
+        currentMonth++;
+        renderCalendar();
+      }
+    });
+  }
+
+  // 初回レンダリング＆表示更新
+  renderCalendar();
+  updateDisplay();
 }

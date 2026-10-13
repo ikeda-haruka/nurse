@@ -1960,10 +1960,10 @@
   </aside>
 
   <!-- =======================================================================
-       クイック見学会予約モーダル (Quick Tour Modal)
+       見学予約カレンダー＆クイック申込モーダル (Reservation Calendar Modal)
        ======================================================================= -->
-  <div id="quickTourModal" class="modal-backdrop fixed inset-0 z-50 bg-warm-900/60 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="modal-content bg-white w-full max-w-lg rounded-3xl p-6 sm:p-8 shadow-2xl border border-sakura-100 max-h-[90vh] overflow-y-auto relative">
+  <div id="quickTourModal" class="modal-backdrop fixed inset-0 z-50 bg-warm-900/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+    <div class="modal-content bg-white w-full max-w-xl rounded-3xl p-5 sm:p-7 shadow-2xl border border-sakura-100 max-h-[92vh] overflow-y-auto relative">
       
       <!-- 閉じるボタン -->
       <button data-close-modal class="absolute top-4 right-4 p-2 text-warm-800 hover:text-warm-900 rounded-full hover:bg-warm-100 transition-colors" aria-label="閉じる">
@@ -1972,47 +1972,121 @@
         </svg>
       </button>
 
-      <div class="text-center mb-6">
-        <span class="inline-block px-3 py-1 bg-sakura-50 text-sakura-600 rounded-full text-xs font-bold border border-sakura-200 mb-2">履歴書不要・私服OK</span>
-        <h3 class="text-xl sm:text-2xl font-bold font-serif text-warm-900">
-          職場見学会のお申し込み
+      <!-- モーダルヘッダー -->
+      <div class="text-center mb-5">
+        <span class="inline-block px-3 py-1 bg-sakura-50 text-sakura-600 rounded-full text-xs font-bold border border-sakura-200 mb-2">履歴書不要・私服OK（所要約30分）</span>
+        <h3 class="text-xl sm:text-2xl font-bold font-serif text-warm-900 flex items-center justify-center gap-2">
+          <svg class="w-6 h-6 text-sakura-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          見学予約カレンダー＆お申し込み
         </h3>
-        <p class="text-xs text-warm-800 mt-2">
-          所要時間は約30分です。お気軽にお越しください。
+        <p class="text-xs text-warm-800 mt-1.5">
+          ご希望の日時（○または△）をクリックして、見学予約にお進みください。
         </p>
       </div>
 
-      <form id="quickTourForm" class="space-y-4">
-        <div>
-          <label class="block text-xs font-bold text-warm-900 mb-1">お名前 <span class="text-sakura-600 font-bold">*</span></label>
-          <input type="text" required placeholder="例：山田 太郎" class="w-full px-4 py-2.5 rounded-xl border border-warm-200 focus:border-sakura-500 focus:ring-2 focus:ring-sakura-200 outline-none text-sm">
+      <!-- 見学予約カレンダー -->
+      <div class="bg-warm-50/80 rounded-2xl p-4 border border-sakura-100 mb-4">
+        <!-- 月切り替えヘッダー -->
+        <div class="flex items-center justify-between mb-3 px-1">
+          <button id="calendarPrevMonth" type="button" class="p-1.5 rounded-lg text-warm-800 hover:bg-white hover:shadow-sm transition-all disabled:opacity-30 disabled:cursor-not-allowed">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <span id="calendarCurrentMonthLabel" class="font-bold text-warm-900 font-serif text-sm sm:text-base">2026年 10月</span>
+          <button id="calendarNextMonth" type="button" class="p-1.5 rounded-lg text-warm-800 hover:bg-white hover:shadow-sm transition-all">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </button>
         </div>
-        <div>
-          <label class="block text-xs font-bold text-warm-900 mb-1">電話番号 <span class="text-sakura-600 font-bold">*</span></label>
-          <input type="tel" required placeholder="例：090-0000-0000" class="w-full px-4 py-2.5 rounded-xl border border-warm-200 focus:border-sakura-500 focus:ring-2 focus:ring-sakura-200 outline-none text-sm">
+
+        <!-- 曜日ヘッダー -->
+        <div class="grid grid-cols-7 gap-1 text-center text-[11px] font-bold mb-1 pb-1 border-b border-warm-200">
+          <span class="text-rose-500">日</span>
+          <span class="text-warm-800">月</span>
+          <span class="text-warm-800">火</span>
+          <span class="text-warm-800">水</span>
+          <span class="text-warm-800">木</span>
+          <span class="text-warm-800">金</span>
+          <span class="text-sky-600">土</span>
         </div>
-        <div>
-          <label class="block text-xs font-bold text-warm-900 mb-1">メールアドレス <span class="text-sakura-600 font-bold">*</span></label>
-          <input type="email" required placeholder="例：nurse@example.com" class="w-full px-4 py-2.5 rounded-xl border border-warm-200 focus:border-sakura-500 focus:ring-2 focus:ring-sakura-200 outline-none text-sm">
+
+        <!-- 日付グリッド（JSで動的生成） -->
+        <div id="calendarDatesGrid" class="grid grid-cols-7 gap-1 text-center text-xs"></div>
+
+        <!-- 凡例 -->
+        <div class="flex items-center justify-center gap-4 text-[10px] text-warm-800 mt-2.5 pt-2 border-t border-warm-200">
+          <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span> ○：空きあり</span>
+          <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span> △：残りわずか</span>
+          <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-stone-300 inline-block"></span> -：受付終了 / 休診</span>
         </div>
-        <div>
-          <label class="block text-xs font-bold text-warm-900 mb-1">保有資格 <span class="text-sakura-600 font-bold">*</span></label>
-          <select required class="w-full px-4 py-2.5 rounded-xl border border-warm-200 focus:border-sakura-500 focus:ring-2 focus:ring-sakura-200 outline-none text-sm bg-white">
-            <option value="正看護師">正看護師</option>
-            <option value="助産師">助産師</option>
-            <option value="准看護師">准看護師</option>
-            <option value="看護学生">看護学生・助産学生</option>
-          </select>
+      </div>
+
+      <!-- 時間帯選択スロット -->
+      <div id="timeSlotContainer" class="mb-4 bg-sakura-50/70 p-3.5 rounded-2xl border border-sakura-200 transition-all">
+        <div class="text-xs font-bold text-warm-900 mb-2 flex items-center justify-between">
+          <span id="selectedDateDisplay" class="text-sakura-600 font-bold flex items-center gap-1">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span id="selectedDateLabel">日時を選択してください</span>
+          </span>
+          <span class="text-[11px] text-warm-800 font-normal">希望時間を選択</span>
         </div>
-        <div>
-          <label class="block text-xs font-bold text-warm-900 mb-1">見学希望日（候補日など）</label>
-          <input type="text" placeholder="例：来週平日午後など" class="w-full px-4 py-2.5 rounded-xl border border-warm-200 focus:border-sakura-500 focus:ring-2 focus:ring-sakura-200 outline-none text-sm">
+        <div class="grid grid-cols-3 gap-2">
+          <button type="button" class="time-slot-btn py-2 px-1 text-xs rounded-xl border border-sakura-200 bg-white hover:bg-sakura-50 font-medium text-warm-900 transition-all text-center" data-time="10:00〜10:30">
+            10:00〜10:30
+          </button>
+          <button type="button" class="time-slot-btn py-2 px-1 text-xs rounded-xl border border-sakura-200 bg-white hover:bg-sakura-50 font-medium text-warm-900 transition-all text-center" data-time="14:00〜14:30">
+            14:00〜14:30
+          </button>
+          <button type="button" class="time-slot-btn py-2 px-1 text-xs rounded-xl border border-sakura-200 bg-white hover:bg-sakura-50 font-medium text-warm-900 transition-all text-center" data-time="16:00〜16:30">
+            16:00〜16:30
+          </button>
+        </div>
+      </div>
+
+      <!-- 予約お申し込みフォーム -->
+      <form id="quickTourForm" class="space-y-3.5">
+        <!-- 選択中の日時バナー -->
+        <div id="selectedDateTimeBanner" class="p-3 rounded-xl bg-sakura-100/70 border border-sakura-300 text-xs flex items-center justify-between">
+          <span class="font-bold text-warm-900">選択中の日時:</span>
+          <span id="selectedDateTimeText" class="font-bold text-sakura-700 text-xs sm:text-sm">上のカレンダーから日時を選択してください</span>
+        </div>
+        <input type="hidden" id="selectedDateTimeInput" name="selectedDateTime" value="" required>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-warm-900 mb-1">お名前 <span class="text-sakura-600 font-bold">*</span></label>
+            <input type="text" id="quickTourName" required placeholder="例：山田 太郎" class="w-full px-3.5 py-2.5 rounded-xl border border-warm-200 focus:border-sakura-500 focus:ring-2 focus:ring-sakura-200 outline-none text-xs sm:text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-warm-900 mb-1">電話番号 <span class="text-sakura-600 font-bold">*</span></label>
+            <input type="tel" id="quickTourPhone" required placeholder="例：090-0000-0000" class="w-full px-3.5 py-2.5 rounded-xl border border-warm-200 focus:border-sakura-500 focus:ring-2 focus:ring-sakura-200 outline-none text-xs sm:text-sm">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-warm-900 mb-1">メールアドレス <span class="text-sakura-600 font-bold">*</span></label>
+            <input type="email" id="quickTourEmail" required placeholder="例：nurse@example.com" class="w-full px-3.5 py-2.5 rounded-xl border border-warm-200 focus:border-sakura-500 focus:ring-2 focus:ring-sakura-200 outline-none text-xs sm:text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-warm-900 mb-1">保有資格 <span class="text-sakura-600 font-bold">*</span></label>
+            <select id="quickTourLicense" required class="w-full px-3.5 py-2.5 rounded-xl border border-warm-200 focus:border-sakura-500 focus:ring-2 focus:ring-sakura-200 outline-none text-xs sm:text-sm bg-white">
+              <option value="正看護師">正看護師</option>
+              <option value="助産師">助産師</option>
+              <option value="准看護師">准看護師</option>
+              <option value="看護学生・助産学生">看護学生・助産学生</option>
+            </select>
+          </div>
         </div>
 
         <div class="pt-2">
-          <button type="submit" class="btn-primary w-full py-3.5 rounded-full font-bold text-sm text-white shadow-lg">
-            見学会に申し込む（送信）
+          <button id="quickTourSubmitBtn" type="submit" class="btn-primary w-full py-3.5 rounded-full font-bold text-sm text-white shadow-lg flex items-center justify-center gap-2">
+            <span>この日程で見学会を予約する</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
           </button>
+          <p class="text-[10px] text-warm-800 text-center mt-2">
+            ※ 予約完了後、担当者より24時間以内に確認のご連絡を差し上げます。
+          </p>
         </div>
       </form>
     </div>
